@@ -8,8 +8,12 @@ public enum TypeOfToken {
     PRINT,
     RETURN,
     BREAK,
+
+
     TRUE,
     FALSE,
+
+
     FUN,
     VAR,
 

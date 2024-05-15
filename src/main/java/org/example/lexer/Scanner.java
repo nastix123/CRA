@@ -1,7 +1,10 @@
 package org.example.lexer;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class Scanner {
     private final String data;
@@ -147,6 +150,17 @@ class Scanner {
         while (isAlphaNumeric(peek())) advance();
         addToken(TypeOfToken.IDENTIFIER);
     }
-    
+
+    private static final Map<String, TypeOfToken> keywords;
+
+    static {
+        keywords = new HashMap<>();
+        keywords.put("cap", TypeOfToken.FALSE);
+        keywords.put("noCap", TypeOfToken.TRUE);
+        keywords.put("побазарим", TypeOfToken.PRINT);
+        keywords.put("эщэщэщ", TypeOfToken.VAR);
+        keywords.put("ебашь", TypeOfToken.FUN);
+
+    }
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 class Scanner {
-    private final String data;
+    private String data;
     private final List<Token> tokens = new ArrayList<>();
 
     private int start = 0;
@@ -148,7 +148,12 @@ class Scanner {
 
     private void identifier() {
         while (isAlphaNumeric(peek())) advance();
-        addToken(TypeOfToken.IDENTIFIER);
+        String text = data.substring(start,current);
+        TypeOfToken type = keywords.get(text);
+        if (type == null) {
+            type = TypeOfToken.IDENTIFIER;
+        }
+        addToken(type);
     }
 
     private static final Map<String, TypeOfToken> keywords;
@@ -160,7 +165,11 @@ class Scanner {
         keywords.put("побазарим", TypeOfToken.PRINT);
         keywords.put("эщэщэщ", TypeOfToken.VAR);
         keywords.put("ебашь", TypeOfToken.FUN);
-
     }
+
+
+
+
+
 
 }
